@@ -17,9 +17,6 @@ const typeDefs = gql`
         cartCount: Int!
     }
 
-    # type Saved {
-    #     savedItems: [Items]
-    # }
 
     type Items {
         _id: ID!
@@ -35,9 +32,6 @@ const typeDefs = gql`
         category: String!
     }
 
-    # type Cart {
-    #     cartItems: [Items]
-    # }
 
     type Auth {
         token: ID!
@@ -50,13 +44,13 @@ const typeDefs = gql`
         me: User
         allItems: Items
         findItem(itemName: String!): Items
-        allCategories: Category
-        findCategory(categoryName: String!): Category
+        allCategories: [Category]
+        findCategory(categoryName: String!): [Category]
     }
 
     # ---------------------------------------------------------------------------------------------------------
     # MUTATIONS
-    type Mutations {
+    type Mutation {
         # Takes email and password and returns an Auth type Object.
         login(email: String!, password: String!): Auth
         # Takes email, password and username and returns an Auth type Object.
@@ -88,7 +82,7 @@ const typeDefs = gql`
             img: String!
             stock: Int!
             category: String!
-        ): Item
+        ): Items
 
         
         # --------------------------------------------
