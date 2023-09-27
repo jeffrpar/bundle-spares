@@ -12,7 +12,7 @@ db.once('open', async () => {
     await Items.deleteMany({});
 
     const categories = await Category.insertMany(categoriesData);
-    const items = await Items.insertMany(itemsData);
+    // const items = await Items.insertMany(itemsData);
 
     console.log('Items and Categories Seeded!');
     process.exit(0);

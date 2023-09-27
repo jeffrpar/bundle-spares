@@ -30,7 +30,7 @@ const resolvers = {
         },
 
         // Searchs for all of the categories available.
-        allCategories: async () => { return await Category.find({}) },
+        allCategories: async () => { const categoryData = await Category.find({}); return categoryData },
 
         // Searchs for a category item.
         findCategory: async (root, args) => {
@@ -40,7 +40,7 @@ const resolvers = {
 
     },
 
-    Mutations: {
+    Mutation: {
         addUser: async (root, args) => {
             // Creates a User with the provided args.
             const user = await User.create(args);

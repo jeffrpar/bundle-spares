@@ -67,7 +67,7 @@ query findItem($itemName: String!){
 export const QUERY_ALL_CATEGORIES = gql`
 
 query allCategories {
-    category {
+    allCategories {
         _id
         category
     }
