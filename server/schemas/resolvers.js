@@ -21,7 +21,7 @@ const resolvers = {
         },
 
         // Searchs for all of the items available.
-        allItems: async () => { return await Items.find({}) },
+        allItems: async () => { return await Items.find({}).populate('category') },
 
         // Searchs for a specifc item.
         findItem: async (root, args) => {
@@ -72,7 +72,7 @@ const resolvers = {
                     { _id: context.user._id },
                     { $addToSet: { savedItems: args } },
                     { new: true, runValidators: true }
-                );
+                ).populate('savedItems');
 
                 // Returns the updated user.
                 return updatedUser;
@@ -84,12 +84,12 @@ const resolvers = {
 
         addToCart: async (root, args, context) => {
             if (context.user) {
-                // Adds a new item with the provided args in the user's cart array.
+                // Adds a new item with the provided args in the user's savedItems array.
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { cart: args } },
                     { new: true, runValidators: true }
-                )
+                ).populate('cart');
 
                 // Returns the updated user.
                 return updatedUser;
@@ -104,9 +104,9 @@ const resolvers = {
                 // Deletes an item with the provided args in the user's cart array.
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { cart: { _id } } },
+                    { $pull: { cart:  _id  } },
                     { new: true, runValidators: true }
-                )
+                ).populate('cart')
 
                 // Returns the updated user.
                 return updatedUser;
@@ -116,14 +116,14 @@ const resolvers = {
             throw new AuthenticationError("You need to be logged in");
         },
 
-        removeSavedItem: async (root, args, context) => {
+        removeSavedItem: async (root, { _id }, context) => {
             if (context.user) {
                 // Deletes an item with the provided args in the user's savedItems array.
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { savedItems: { _id } } },
+                    { $pull: { savedItems:  _id  } },
                     { new: true, runValidators: true }
-                )
+                ).populate('savedItems')
 
                 return updatedUser;
             }
@@ -134,11 +134,20 @@ const resolvers = {
 
         addItem: async (root, args, context) => {
             if (context.user) {
-                // Adds a new item with the provided args.
-                const updatedUser = await Items.create(...args)
 
-                // Returns the updated user.
-                return updatedUser;
+                // Checks if the item already exists.
+                const itemExists = await Items.findOne({ name: args.name });
+
+                if (!itemExists) {
+                    // Adds a new item with the provided args.
+                    const updatedItem = (await Items.create(args)).populate('category');
+
+                    // Returns the updated user.
+                    return updatedItem;
+                }
+
+                return null;
+
             }
 
             // Throws an auth error if the user is not logged in.

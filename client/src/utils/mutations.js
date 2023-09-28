@@ -34,7 +34,7 @@ export const ADD_ITEM = gql`
         $category: String!) 
         # -----------------------------------------------
         {
-        addItem(name: $name, serialKey: $serialKey, img: $img, stock: $stock, category: $category) {
+        addItem(name: $name, serialKey: $serialKey, img: $img, stock: $stock, genre: $category) {
             _id
             name
             serialKey
@@ -48,19 +48,49 @@ export const ADD_ITEM = gql`
 `;
 
 export const ADD_TO_CART = gql`
-
-
-`
+    mutation AddToCart($id: ID!) {
+      addToCart(_id: $id) {
+        email
+        username
+        cart {
+          _id
+          name
+        }  
+      }
+    }
+`;
 
 export const REMOVE_FROM_CART = gql`
-    
-`
+    mutation RemoveCartItem($id: ID!) {
+      removeCartItem(_id: $id) {
+        cart {
+          name
+    }
+  }
+}
+`;
 
 export const SAVE_ITEM = gql`
-
-`
+    mutation SaveItem($id: ID!) {
+      saveItem(_id: $id) {
+        _id
+        email
+        username
+        savedItems {
+          _id
+          name
+        }
+      }
+  }
+`;
 
 export const REMOVE_SAVED_ITEM = gql`
-
-`
+    mutation RemoveSavedItem($id: ID!) {
+      removeSavedItem(_id: $id) {
+        savedItems {
+          name
+        }
+      }
+    }
+`;
 
