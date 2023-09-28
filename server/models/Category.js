@@ -12,7 +12,10 @@ const categorySchema = new Schema (
         category: {
             type: String,
             required: true
-        }
+        },
+        items: {
+            type: String
+        },
     }
 
 );

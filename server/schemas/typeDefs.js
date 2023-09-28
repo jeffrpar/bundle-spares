@@ -24,12 +24,13 @@ const typeDefs = gql`
         serialKey: String!
         img: String!
         stock: Int!
-        category: [Category]
+        category: Category
     }
 
     type Category {
         _id: ID!
         category: String!
+        items: String
     }
 
 
@@ -42,7 +43,7 @@ const typeDefs = gql`
     # QUERIES
     type Query {
         me: User
-        allItems: Items
+        allItems: [Items]
         findItem(itemName: String!): Items
         allCategories: [Category]
         findCategory(categoryName: String!): [Category]
@@ -57,31 +58,27 @@ const typeDefs = gql`
         addUser(username: String!, email: String!, password: String!): Auth
         # Takes all the data from the Item and returns an Updated User with the saved item. -> Saved
         saveItem(
-            name: String!
-            serialKey: String!
-            img: String!
-            stock: Int!
-            category: String!
+            _id: ID!
         ): User
         # Takes all the data from the Item and returns an Updated User with the saved item. -> Cart
         addToCart(   
-            name: String!
-            serialKey: String!
-            img: String!
-            stock: Int!
-            category: String!
+            _id: ID!
         ): User
         # Takes the desired item to delete ID
-        removeCartItem(_id: ID!): User
+        removeCartItem(
+            _id: ID!
+        ): User
         # Takes the desired item to delete ID
-        removeSavedItem(_id: ID!): User
+        removeSavedItem(
+            _id: ID!
+        ): User
         # 
         addItem(
             name: String!
             serialKey: String!
             img: String!
             stock: Int!
-            category: String!
+            category: ID!
         ): Items
 
         
