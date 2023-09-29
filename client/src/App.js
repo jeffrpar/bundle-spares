@@ -3,6 +3,8 @@ import Header from './components/Header/Header';
 import Home from './components/Main/Home/Home';
 // import Footer from './components/Footer/Footer';
 import Cart from './components/Main/Cart/Cart';
+import Register from './components/Main/Register/Register';
+import Login from './components/Main/Login/Login';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from 'apollo-link-context';
 
@@ -57,6 +59,8 @@ function App() {
         {/* Conditionally render the selected Main component */}
         {activeSection === 'Home' && <Home />}
         {activeSection === 'Cart' && <Cart />}
+        {activeSection === 'Register' && <Register />}
+        {activeSection === 'Login' && <Login />}
 
         {/* <Footer /> */}
 

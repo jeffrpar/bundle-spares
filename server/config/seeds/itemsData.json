@@ -1,3 +1,16 @@
 [
-    
+    {
+        "name": "Baldur's Gate III",
+        "serialKey": "THIS-CODE-IS-FAKE",
+        "img": "https://cdn.akamai.steamstatic.com/steam/apps/1086940/header.jpg?t=1695393586",
+        "stock": "In Stock",
+        "category": "6516485b8c8f38220d2b60c3"
+    },
+    {
+        "name": "Starfield",
+        "serialKey": "THIS-CODE-IS-FAKE",
+        "img": "https://cdn.akamai.steamstatic.com/steam/apps/1716740/header.jpg?t=1694716152",
+        "stock": "In Stock",
+        "category": "6516485b8c8f38220d2b60cc"
+    }
 ]
