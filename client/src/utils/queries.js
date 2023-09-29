@@ -13,9 +13,6 @@ query me {
         serialKey
         img
         stock
-        category {
-            category
-        }
       }
       cart {
         _id
@@ -23,9 +20,6 @@ query me {
         serialKey
         img
         stock
-        category {
-            category
-        }
       }
     }
   }

@@ -19,15 +19,23 @@ function Cart() {
     // Query to get user data
     const { loading, data } = useQuery(QUERY_ME);
 
-    // Retrieve user data from query
-    const userData = data?.me || {};
+    // UseState to store user data
+    const [userData, setUserData] = useState({});
+
+    // UseEffect to set user data
+    useEffect(() => {
+        if (data) {
+            setUserData(data.me);
+        }
+    }
+        , [data]);
 
     // Mutation to remove item from cart
     const [removeFromCart] = useMutation(REMOVE_FROM_CART);
 
     // --------------------------------------------------------------------------------
     // Create a function to handle removing an item from the cart
-    const handleRemoveFromCart = async (itemId) => {
+    const handleRemoveFromCart = async (itemId, id) => {
         // Get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -40,6 +48,12 @@ function Cart() {
             await removeFromCart({
                 variables: { id: itemId }
             });
+
+            // Filter out the item that was removed
+            const filteredData = userData.cart.filter(item => item._id !== id);
+            
+            // Set the user data to the filtered data 
+            setUserData({ ...userData, cart: filteredData });
 
         } catch (err) {
             console.error(err);
@@ -57,7 +71,45 @@ function Cart() {
 
     // After loading, return the cart
     return (
-        <div>Cart</div>
+        <>
+            {
+                Auth.loggedIn() ?
+                    (
+                        <>
+                            <h1>Cart</h1>
+                            <div className="cart-card">
+                                {userData.cart?.map((item, index) => {
+                                    return (
+                                        <div key={item._id} className="cart-item">
+                                            <div className="cart-item-image">
+                                                <img src={item.img} alt={item.name} />
+                                            </div>
+                                            <div className="cart-item-name">
+                                                <h3>{item.name}</h3>
+                                            </div>
+                                            <div className="cart-item-stock">
+                                                <h3>${item.stock}</h3>
+                                            </div>
+                                            <div className="cart-item-category">
+                                                <h3>${item.category}</h3>
+                                            </div>
+                                            <div className="cart-item-remove">
+                                                <button onClick={() => handleRemoveFromCart(item._id, item._id)}>Remove</button>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </>
+                    )
+                    :
+                    (
+                        <>
+                            <div>Not Logged In, Log in in order to see your cart</div>
+                        </>
+                    )
+            }
+        </>
     )
 }
 

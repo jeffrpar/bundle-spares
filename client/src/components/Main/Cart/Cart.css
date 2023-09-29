@@ -1,0 +1,17 @@
+.cart-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-item {
+    background: blue;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    width: 300px;
+    padding: 50px;
+    text-align: center;
+}
