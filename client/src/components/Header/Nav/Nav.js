@@ -1,5 +1,6 @@
 import React from 'react';
 import './Nav.css'; // Import CSS file for styling
+import Auth from '../../../utils/auth';
 
 function Nav(props) {
   const { activeSection, onSectionChange } = props;
@@ -19,6 +20,13 @@ function Nav(props) {
         <li className={`nav-item ${activeSection === 'Login' ? 'active' : ''}`}>
           <button onClick={() => onSectionChange('Login')}>Login</button>
         </li>
+        <li className={`nav-item ${activeSection === 'Register' ? 'active' : ''}`}>
+          <button onClick={() => onSectionChange('Register')}>Register</button>
+        </li>
+        <li className={`nav-item ${activeSection === 'Logout' ? 'active' : ''}`}>
+          <button onClick={(Auth.logout)}>Logout</button>
+        </li>
+
       </ul>
     </nav>
   );
