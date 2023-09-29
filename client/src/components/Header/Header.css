@@ -1,0 +1,43 @@
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.header-content {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* Stack content vertically on small screens */
+  align-items: center; /* Center content horizontally */
+  justify-content: center; /* Center content vertically */
+}
+
+.header-left {
+  margin-bottom: 20px; /* Add spacing between name and navigation */
+}
+
+.header-right {
+  display: flex;
+  flex-wrap: wrap; /* Wrap navigation links on small screens */
+  justify-content: center; /* Center navigation horizontally */
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* Add a media query for smaller screens */
+@media (max-width: 767px) {
+  .header-content {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+  }
+
+  .header-right {
+    margin-top: 20px; /* Add spacing between name and navigation */
+  }
+}
