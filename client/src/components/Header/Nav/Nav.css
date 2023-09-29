@@ -1,0 +1,38 @@
+/* Style the outer navigation container */
+.nav {
+    background-color: #333; /* Background color for the navigation bar */
+    color: #fff; /* Text color */
+  }
+  
+  /* Style the navigation list */
+  .nav-list {
+    list-style: none; /* Remove list bullet points */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center-align child elements horizontally */
+    padding: 0; /* Remove default padding */
+  }
+  
+  /* Style individual navigation items */
+  .nav-item {
+    margin: 0 20px; /* Add spacing between navigation items */
+  }
+  
+  /* Style the active navigation item */
+  .nav-item.active {
+    border-bottom: 2px solid #fff; /* Highlight the active item with a bottom border */
+  }
+  
+  /* Style the navigation buttons */
+  .nav-item button {
+    background: none; /* Remove background color */
+    border: none; /* Remove border */
+    color: inherit; /* Use the parent's text color */
+    font-size: 16px; /* Adjust the font size as needed */
+    cursor: pointer; /* Show a pointer cursor on hover */
+  }
+  
+  /* Style the navigation buttons on hover */
+  .nav-item button:hover {
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
