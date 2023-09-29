@@ -33,7 +33,7 @@
 
 ## Usage
 
-Users can sign up for new accounts, log in securely, and save books to their personal library. They can also remove books from their library if they no longer wish to keep them.
+
 
 ## Contributing-Guidelines
 
