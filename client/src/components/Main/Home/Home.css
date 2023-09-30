@@ -1,0 +1,17 @@
+.home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cart-item {
+    background: blue;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    width: 300px;
+    padding: 50px;
+    text-align: center;
+}

@@ -5,6 +5,7 @@ import Home from './components/Main/Home/Home';
 import Cart from './components/Main/Cart/Cart';
 import Register from './components/Main/Register/Register';
 import Login from './components/Main/Login/Login';
+import Wishlist from './components/Main/Wishlist/Wishlist';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from 'apollo-link-context';
 
@@ -59,6 +60,7 @@ function App() {
         {/* Conditionally render the selected Main component */}
         {activeSection === 'Home' && <Home />}
         {activeSection === 'Cart' && <Cart />}
+        {activeSection === 'Wishlist' && <Wishlist />}
         {activeSection === 'Register' && <Register />}
         {activeSection === 'Login' && <Login />}
 
