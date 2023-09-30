@@ -19,6 +19,7 @@ function Cart() {
     // Query to get user data
     const { loading, data } = useQuery(QUERY_ME);
 
+
     // UseState to store user data
     const [userData, setUserData] = useState({});
 
@@ -31,7 +32,7 @@ function Cart() {
         , [data]);
 
     // Mutation to remove item from cart
-    const [removeFromCart] = useMutation(REMOVE_FROM_CART);
+    const [removeFromCart] = useMutation(REMOVE_FROM_CART, { refetchQueries: [QUERY_ME] });
 
     // --------------------------------------------------------------------------------
     // Create a function to handle removing an item from the cart
@@ -51,7 +52,7 @@ function Cart() {
 
             // Filter out the item that was removed
             const filteredData = userData.cart.filter(item => item._id !== id);
-            
+
             // Set the user data to the filtered data 
             setUserData({ ...userData, cart: filteredData });
 

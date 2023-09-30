@@ -29,7 +29,7 @@ query me {
 export const QUERY_ALL_ITEMS = gql`
 
 query allItems {
-    items {
+  allItems {
         _id
         name
         serialKey
