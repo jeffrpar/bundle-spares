@@ -7,6 +7,8 @@ import { useQuery, useMutation } from '@apollo/client'
 import Auth from '../../../utils/auth'
 import { QUERY_ME } from '../../../utils/queries'
 import { REMOVE_SAVED_ITEM } from '../../../utils/mutations'
+import { ADD_TO_CART } from '../../../utils/mutations'
+import { REMOVE_FROM_CART } from '../../../utils/mutations'
 
 
 // --------------------------------------------------------------------------------
@@ -21,12 +23,12 @@ function Wishlist() {
 
 
     // UseState to store user data
-    const [userData, setUserData] = useState({});
+    const [savedData, setSavedData] = useState({});
 
     // UseEffect to set user data
     useEffect(() => {
         if (data) {
-            setUserData(data.me);
+            setSavedData(data.me);
         }
     }
         , [data]);
@@ -51,15 +53,69 @@ function Wishlist() {
             });
 
             // Filter out the item that was removed
-            const filteredData = userData.savedItems.filter(item => item._id !== id);
+            const filteredData = savedData.savedItems.filter(item => item._id !== id);
 
             // Set the user data to the filtered data 
-            setUserData({ ...userData, savedItems: filteredData });
+            setSavedData({ ...savedData, savedItems: filteredData });
 
         } catch (err) {
             console.error(err);
         }
     };
+
+    // Query to get user data
+    const myData = useQuery(QUERY_ME);
+
+    // UseState to store user data
+    const [userData, setUserData] = useState({});
+
+    useEffect(() => {
+        if (myData) {
+            setUserData(myData.me);
+        }
+    }
+        , [myData]);
+
+    // Execute the GraphQL mutation to add an item to the cart
+    const [addToCart] = useMutation(ADD_TO_CART, { refetchQueries: [QUERY_ME] });
+
+    // Function to handle the add to cart button
+    const handleAddToCart = async (itemId) => {
+        try {
+            const { data } = await addToCart({
+                variables: { id: itemId },
+            });
+            handleRemoveFromSaved(itemId, itemId)
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    // Mutation to remove item from cart
+    const [removeFromCart] = useMutation(REMOVE_FROM_CART, { refetchQueries: [QUERY_ME] });
+
+    // --------------------------------------------------------------------------------
+    // Create a function to handle removing an item from the cart
+    const handleRemoveFromCart = async (itemId, id) => {
+        // Get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        // If token is null, return false
+        if (!token) { return false };
+
+        // Try to remove item from cart
+        try {
+            // Remove item from cart
+            await removeFromCart({
+                variables: { id: itemId }
+            });
+
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+
 
     // --------------------------------------------------------------------------------
     // Rendering
@@ -73,43 +129,62 @@ function Wishlist() {
     // After loading, return the saved items
     return (
         <>
-            {
-                Auth.loggedIn() ?
-                    (
-                        <>
-                            <h1>WishList</h1>
-                            <div className="saved-card">
-                                {userData.savedItems?.map((item, index) => {
-                                    return (
-                                        <div key={item._id} className="saved-item">
-                                            <div className="saved-item-image">
-                                                <img src={item.img} alt={item.name} />
+            <h2>WishList</h2>
+            <div className='saved'>
+                {
+                    Auth.loggedIn() ?
+                        (
+                            <>
+
+                                <div className="cart-card">
+                                    {savedData.savedItems?.map((item, index) => {
+                                        return (
+                                            <div key={item._id} className="cart-item">
+                                                <div className="cart-item-image">
+                                                    <img src={item.img} alt={item.name} />
+                                                </div>
+                                                <div className="cart-item-name">
+                                                    <h3>{item.name}</h3>
+                                                </div>
+                                                <div className="cart-item-stock">
+                                                    <h3>{item.stock}</h3>
+                                                </div>
+                                                <div className="cart-item-category">
+                                                    <h3>{item.category.category}</h3>
+                                                </div>
+                                                <div className='buttons'>
+                                                    {myData.data.me.cart.find(cartItem => cartItem._id === item._id) ? (
+                                                        // If the item is in the cart, show the remove button
+                                                        <div className="cart-item-remove">
+                                                            <h3>In cart</h3>
+                                                        </div>
+                                                    ) : (
+                                                        <>
+                                                            <div className="cart-item-add">
+                                                                <button onClick={() => handleAddToCart(item._id)}>Add to Cart</button>
+                                                            </div>
+                                                        </>
+                                                    )}
+
+                                                    <div className="cart-item-remove">
+                                                        <button onClick={() => handleRemoveFromSaved(item._id, item._id)}>Remove</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className="saved-item-name">
-                                                <h3>{item.name}</h3>
-                                            </div>
-                                            <div className="saved-item-stock">
-                                                <h3>${item.stock}</h3>
-                                            </div>
-                                            <div className="saved-item-category">
-                                                <h3>${item.category}</h3>
-                                            </div>
-                                            <div className="saved-item-remove">
-                                                <button onClick={() => handleRemoveFromSaved(item._id, item._id)}>Remove</button>
-                                            </div>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        </>
-                    )
-                    :
-                    (
-                        <>
-                            <div>Not Logged In, Log in in order to see your saved items</div>
-                        </>
-                    )
-            }
+                                        )
+                                    })}
+                                </div>
+
+                            </>
+                        )
+                        :
+                        (
+                            <>
+                                <div>Not Logged In, Log in in order to see your saved items</div>
+                            </>
+                        )
+                }
+            </div>
         </>
     )
 }

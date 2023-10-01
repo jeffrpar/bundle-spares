@@ -68,9 +68,9 @@ function Register() {
 
 
     return (
-        <>
+        <div className="forma-container">
             {/* This is needed for the validation functionality above */}
-            <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+            <Form noValidate validated={validated} onSubmit={handleFormSubmit} className="forma">
                 {/* show alert if server response is bad */}
                 <Alert
                     dismissible
@@ -81,7 +81,7 @@ function Register() {
                     Something went wrong with your signup!
                 </Alert>
 
-                <Form.Group>
+                <Form.Group className="form-element">
                     <Form.Label htmlFor="username">Username</Form.Label>
                     <Form.Control
                         type="text"
@@ -91,12 +91,12 @@ function Register() {
                         value={userFormData.username}
                         required
                     />
-                    <Form.Control.Feedback type="invalid">
-                        Username is required!
+                    <Form.Control.Feedback type="invalid" className='invalido'>
+                        <h6>Username is required!</h6>
                     </Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className="form-element">
                     <Form.Label htmlFor="email">Email</Form.Label>
                     <Form.Control
                         type="email"
@@ -107,11 +107,11 @@ function Register() {
                         required
                     />
                     <Form.Control.Feedback type="invalid">
-                        Email is required!
+                        <h6>Email is required!</h6>
                     </Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className="form-element">
                     <Form.Label htmlFor="password">Password</Form.Label>
                     <Form.Control
                         type="password"
@@ -122,7 +122,7 @@ function Register() {
                         required
                     />
                     <Form.Control.Feedback type="invalid">
-                        Password is required!
+                    <h6>Password is required!</h6>
                     </Form.Control.Feedback>
                 </Form.Group>
                 <Button
@@ -139,7 +139,7 @@ function Register() {
                     Submit
                 </Button>
             </Form>
-        </>
+        </div>
 
     )
 }

@@ -1,21 +1,27 @@
 .header {
-  background-color: #333;
+  background-color: rgb(32, 32, 32);
   color: #fff;
-  padding: 20px 0;
+  padding: 25px 0;
   text-align: center;
+  width: 100%;
 }
 
 .header-content {
-  max-width: 960px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column; /* Stack content vertically on small screens */
+  flex-direction: row; /* Stack content vertically on small screens */
   align-items: center; /* Center content horizontally */
-  justify-content: center; /* Center content vertically */
+  justify-content: space-between; /* Center content vertically */
+  margin: auto 20px auto 20px ; /* Add some spacing between the content and the navigation */
+  
 }
 
 .header-left {
-  margin-bottom: 20px; /* Add spacing between name and navigation */
+  align-items: center; /* Center content horizontally */
+}
+
+.header-left span {
+  color: #FFD700;
 }
 
 .header-right {

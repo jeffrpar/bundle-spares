@@ -8,6 +8,7 @@ import Login from './components/Main/Login/Login';
 import Wishlist from './components/Main/Wishlist/Wishlist';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from 'apollo-link-context';
+import './App.css';
 
 // --------------------------------------------------------------------------------
 // Apollo Setup

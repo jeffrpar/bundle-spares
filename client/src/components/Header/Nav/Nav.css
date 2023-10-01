@@ -1,6 +1,6 @@
 /* Style the outer navigation container */
 .nav {
-    background-color: #333; /* Background color for the navigation bar */
+    background-color: rgb(32, 32, 32);
     color: #fff; /* Text color */
   }
   
@@ -33,6 +33,9 @@
   
   /* Style the navigation buttons on hover */
   .nav-item button:hover {
-    text-decoration: underline; /* Add underline on hover */
+    text-decoration: none; /* Add underline on hover */
+    color: #FFD700; /* Change text color on hover */
+    transform: scale(1.1);
+    transition: ease-in-out 300ms;  /* Add a transition effect */
   }
   

@@ -13,6 +13,10 @@ query me {
         serialKey
         img
         stock
+        category {
+          _id
+          category
+        }
       }
       cart {
         _id
@@ -20,6 +24,10 @@ query me {
         serialKey
         img
         stock
+        category {
+          _id
+          category
+        }
       }
     }
   }
