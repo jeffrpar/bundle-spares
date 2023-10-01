@@ -1,0 +1,64 @@
+.forma-container {
+    background-color: rgba(226, 226, 226, 0.459);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+    align-items: center;
+    text-align: center;
+}
+
+.forma {
+    background-color: rgb(32, 32, 32);
+    color: aliceblue;
+    padding: 200px;
+    border-radius: 30px;
+}
+
+.forma:hover {
+    
+    border: 5px solid #FFD700;
+    transition: ease-in-out 300ms;
+}
+
+.form-element {
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    background: rgba(240, 248, 255, 0.007);
+    padding: 25px 30px;
+    border-radius: 20px;
+    border: 2px solid #FFD700;
+}
+
+.form-label {
+    color: #FFD700;
+    margin-right: 30px;
+}
+
+.form-control {
+    background: rgba(240, 248, 255, 0.007);
+    border: none;
+    color: aliceblue;
+    font-size: 15px;
+    width: 300px;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+.btn {
+    background: rgba(240, 248, 255, 0.007);
+    border: none;
+    color: #FFD700;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 2px solid #FFD700;
+    border-radius: 30px;
+}
+
+.btn:hover {
+    background: #FFD700;
+    transform: scale(1.1);
+    color: rgb(32, 32, 32);
+    transition: ease-in-out 300ms;
+}

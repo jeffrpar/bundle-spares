@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
-
+import "./Login.css";
 import { LOGIN_USER } from "../../../utils/mutations";
 import Auth from "../../../utils/auth";
 
@@ -46,17 +46,17 @@ function Login() {
     };
 
     return (
-        <>
-            <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-                <Alert
+        <div className="forma-container">
+            <Form noValidate validated={validated} onSubmit={handleFormSubmit} className="forma">
+                <Alert className="alert"
                     dismissible
                     onClose={() => setShowAlert(false)}
                     show={showAlert}
                     variant="danger"
                 >
-                    Something went wrong with your login credentials!
+                    <h2>Something went wrong with your login credentials!</h2>
                 </Alert>
-                <Form.Group>
+                <Form.Group className="form-element">
                     <Form.Label htmlFor="email">Email</Form.Label>
                     <Form.Control
                         type="text"
@@ -66,12 +66,9 @@ function Login() {
                         value={userFormData.email}
                         required
                     />
-                    <Form.Control.Feedback type="invalid">
-                        Email is required!
-                    </Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className="form-element">
                     <Form.Label htmlFor="password">Password</Form.Label>
                     <Form.Control
                         type="password"
@@ -81,9 +78,6 @@ function Login() {
                         value={userFormData.password}
                         required
                     />
-                    <Form.Control.Feedback type="invalid">
-                        Password is required!
-                    </Form.Control.Feedback>
                 </Form.Group>
                 <Button
                     disabled={!(userFormData.email && userFormData.password)}
@@ -93,7 +87,7 @@ function Login() {
                     Submit
                 </Button>
             </Form>
-        </>
+        </div>
     );
 };
 

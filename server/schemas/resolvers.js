@@ -12,7 +12,9 @@ const resolvers = {
         me: async (root, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id }).select('-__v -password'
-                ).populate('savedItems cart');
+                ).populate('savedItems cart')
+                    .populate({ path: 'cart', populate: { path: 'category' } })
+                    .populate({ path: 'savedItems', populate: { path: 'category' } });
                 // Returns the user information and takes the password out of the object.
                 return userData;
             };
@@ -104,7 +106,7 @@ const resolvers = {
                 // Deletes an item with the provided args in the user's cart array.
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { cart:  _id  } },
+                    { $pull: { cart: _id } },
                     { new: true, runValidators: true }
                 ).populate('cart')
 
@@ -121,7 +123,7 @@ const resolvers = {
                 // Deletes an item with the provided args in the user's savedItems array.
                 const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $pull: { savedItems:  _id  } },
+                    { $pull: { savedItems: _id } },
                     { new: true, runValidators: true }
                 ).populate('savedItems')
 

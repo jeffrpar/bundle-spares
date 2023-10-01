@@ -149,57 +149,61 @@ function Home() {
                 <h3>{item.name}</h3>
               </div>
               <div className="cart-item-stock">
-                <h3>{item.stock}</h3>
+                <h3><span>Stock: </span>{item.stock}</h3>
               </div>
               <div key={item.category._id} className="cart-item-category">
                 <h3>{item.category.category}</h3>
               </div>
-              {Auth.loggedIn() ?
-                (
-                  <>
+              <div className="buttons">
+                {Auth.loggedIn() ?
+                  (
                     <>
-                      {myData.data.me.cart.find(cartItem => cartItem._id === item._id) ? (
-                        // If the item is in the cart, show the remove button
-                        <div className="cart-item-remove">
-                          <button onClick={() => handleRemoveFromCart(item._id, item._id)}>Remove from Cart</button>
-                        </div>
-                      ) : (
-                        <>
-                          <div className="cart-item-add">
-                            <button onClick={() => handleAddToCart(item._id)}>Add to Cart</button>
+                      <>
+                        {myData.data.me.cart.find(cartItem => cartItem._id === item._id) ? (
+                          // If the item is in the cart, show the remove button
+                          <div className="cart-item-remove">
+                            <button onClick={() => handleRemoveFromCart(item._id, item._id)}><i class="fa-solid fa-ban"></i></button>
                           </div>
-                        </>
-                      )}
+                        ) : (
+                          <>
+                            <div className="cart-item-add">
+                              <button onClick={() => handleAddToCart(item._id)}><i class="fa-solid fa-cart-shopping"></i></button>
+                            </div>
+                          </>
+                        )}
 
+                      </>
+                      <>
+                        {myData.data.me.savedItems.find(cartItem => cartItem._id === item._id) ? (
+                          // If the item is in the SaveItem, show the remove button
+                          <div className="cart-item-remove">
+                            <button onClick={() => handleRemoveFromSaved(item._id, item._id)}><i class="fa-solid fa-heart"></i></button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="cart-item-add">
+                              <button onClick={() => handleAddToWishlist(item._id)}><i class="fa-regular fa-heart"></i></button>
+                            </div>
+                          </>
+                        )}
+
+                      </>
                     </>
+                  )
+                  :
+                  (
                     <>
-                      {myData.data.me.savedItems.find(cartItem => cartItem._id === item._id) ? (
-                        // If the item is in the SaveItem, show the remove button
-                        <div className="cart-item-remove">
-                          <button onClick={() => handleRemoveFromSaved(item._id, item._id)}>Remove from Wishlist <i class="fa-solid fa-heart"></i></button>
-                        </div>
-                      ) : (
-                        <>
-                          <div className="cart-item-add">
-                            <button onClick={() => handleAddToWishlist(item._id)}>Add to Wishlist <i class="fa-regular fa-heart"></i></button>
-                          </div>
-                        </>
-                      )}
-
+                      <h1 className="log-to">LOG IN TO ADD TO CART</h1>
                     </>
-                  </>
-                )
-                :
-                (
-                  <>
-                    <h1>LOG IN TO ADD TO CART</h1>
-                  </>
-                )
-              }
+                  )
+                }
+              </div>
             </div>
           )
         })}
+
       </div>
+
     </>
   );
 }
