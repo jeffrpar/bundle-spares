@@ -62,3 +62,41 @@
     color: rgb(32, 32, 32);
     transition: ease-in-out 300ms;
 }
+
+
+@media screen and (max-width: 768px) {
+    .forma {
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        width: 350px;
+    }
+
+    .form-element {
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-size: 20px;
+        background: rgba(240, 248, 255, 0.007);
+        padding: 25px 30px;
+        border-radius: 0px;
+        border: none;
+        width: 300px;   
+    }
+
+    .btn {
+        width: 100px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    .form-control {
+        width: 200px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+}

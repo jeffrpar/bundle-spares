@@ -1,7 +1,10 @@
 .forma-container {
     background-color: rgba(226, 226, 226, 0.459);
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(64,9,121,1) 27%, rgba(0,0,0,0.9122023809523809) 100%);
     height: 100vh;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     padding-top: 100px;
     align-items: center;
@@ -13,10 +16,10 @@
     color: aliceblue;
     padding: 200px;
     border-radius: 30px;
+    text-align: center;
 }
 
 .forma:hover {
-    
     border: 5px solid #FFD700;
     transition: ease-in-out 300ms;
 }
@@ -29,6 +32,7 @@
     padding: 25px 30px;
     border-radius: 20px;
     border: 2px solid #FFD700;
+    text-align: center;
 }
 
 .form-label {
@@ -44,6 +48,7 @@
     width: 300px;
     border-radius: 20px;
     padding: 10px 20px;
+    text-align: center;
 }
 
 .btn {
@@ -61,4 +66,45 @@
     transform: scale(1.1);
     color: rgb(32, 32, 32);
     transition: ease-in-out 300ms;
+}
+
+@media screen and (max-width: 768px) {
+    .forma {
+        padding: 0;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        width: 350px;
+    }
+
+    .form-element {
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        font-size: 20px;
+        background: rgba(240, 248, 255, 0.007);
+        padding: 25px 30px;
+        border-radius: 0px;
+        border: none;
+        width: 300px;   
+    }
+
+    .btn {
+        width: 100px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    .form-control {
+        width: 200px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    .form-label {
+        margin-right: 0;
+    }
 }

@@ -73,8 +73,9 @@ function Cart() {
     // After loading, return the cart
     return (
         <>
-            <h2>Cart</h2>
+            
             <div className='cart'>
+            <h2>Cart</h2>
                 {
                     Auth.loggedIn() ?
                         (
@@ -108,7 +109,7 @@ function Cart() {
                         :
                         (
                             <>
-                                <div>Not Logged In, Log in in order to see your cart</div>
+                                <div style={{color: "aliceblue"}}>Not Logged In, Log in in order to see your cart</div>
                             </>
                         )
                 }
