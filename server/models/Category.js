@@ -13,9 +13,9 @@ const categorySchema = new Schema (
             type: String,
             required: true
         },
-        items: {
+        items: [{
             type: String
-        },
+        }],
     }
 
 );
