@@ -129,8 +129,9 @@ function Wishlist() {
     // After loading, return the saved items
     return (
         <>
-            <h2>WishList</h2>
+            
             <div className='saved'>
+            <h2>WishList</h2>
                 {
                     Auth.loggedIn() ?
                         (
