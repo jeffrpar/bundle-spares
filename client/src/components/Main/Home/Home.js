@@ -17,9 +17,9 @@ function Home() {
   const [userData, setUserData] = useState({});
 
 
-
   // Execute the GraphQL query to fetch item data
   const { loading, data } = useQuery(QUERY_ALL_ITEMS);
+  console.log(data);
 
   // UseState to store user data
   const [itemsData, setItemsData] = useState({});
@@ -135,7 +135,7 @@ function Home() {
 
   return (
     <>
-      <h2>Home</h2>
+
       <div className="home">
 
         {itemsData.allItems?.map(item => {

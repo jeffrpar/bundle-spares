@@ -1,9 +1,20 @@
 .home {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0;
+    padding-top: 100px;
+    justify-content: center;
     background-color: rgba(226, 226, 226, 0.459);
-    height: 100vh;
+    /* background-image: url("../../../assets/style/img/luke-chesser-3rWagdKBF7U-unsplash-2.jpg");
+    background-position: center; */
+    /* background-repeat: repeat; */
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(64,9,121,1) 27%, rgba(0,0,0,0.9122023809523809) 100%);
+    object-fit: fill;
+    background-size: cover;
+    height: 100%;
+    align-content: flex-start
 }
 
 .home .log-to {
@@ -41,7 +52,7 @@ h2 {
     background: rgb(32, 32, 32);
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    margin: 0 30px;
     margin-bottom: 100px;
     width: 350px;
     height: 200px;
@@ -135,6 +146,7 @@ h2 {
 }
 
 
+/* Media Queries */
 
 @media (max-width: 767px) {
     .home {
@@ -142,9 +154,6 @@ h2 {
         align-items: center;
     }
 
-    .home .cart-item {
-        margin-bottom: 50px;
-    }
 }
 
 @media (max-width: 400px) {
