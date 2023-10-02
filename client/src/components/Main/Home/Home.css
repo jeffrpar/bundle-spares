@@ -11,9 +11,10 @@
     /* background-repeat: repeat; */
     background: rgb(0,0,0);
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(64,9,121,1) 27%, rgba(0,0,0,0.9122023809523809) 100%);
-    object-fit: fill;
+    align-items: center;
     background-size: cover;
     height: 100%;
+    width: 100%;
     align-content: flex-start
 }
 
@@ -49,6 +50,7 @@ h2 {
 }
 
 .home .cart-item {
+    margin: 0 auto;
     background: rgb(32, 32, 32);
     display: flex;
     flex-direction: column;
@@ -152,6 +154,11 @@ h2 {
     .home {
         flex-direction: column;
         align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    .home .cart-item {
+        margin-bottom: 150px;
     }
 
 }
