@@ -113,6 +113,31 @@
     transition: ease-in-out 300ms;
 }
 
+.checkout-button-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.checkout-button {
+    background-color: #FFD700; /* Set the button background color */
+    color: rgb(32, 32, 32); /* Set the text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: ease-in-out 300ms;
+    max-width: 300px;
+    justify-content: center;
+}
+
+.checkout-button:hover {
+    background-color: rgb(32, 32, 32); /* Set the hover background color */
+    color: #FFD700; /* Set the hover text color */
+    transform: scale(1.1);
+    transition: ease-in-out 300ms;
+}
+
 .cart .cart-item h3 {
     margin: 5px 0;
 }

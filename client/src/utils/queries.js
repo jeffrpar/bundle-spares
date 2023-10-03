@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const QUERY_ME = gql`
 
-query me {
+  query me {
     me {
       _id
       username
@@ -29,9 +29,16 @@ query me {
           category
         }
       }
+      ownedItems {
+        _id
+        name
+        serialKey
+        img
+      }
     }
   }
 `;
+
 
 
 export const QUERY_ALL_ITEMS = gql`
