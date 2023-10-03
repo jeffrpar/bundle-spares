@@ -1,6 +1,7 @@
 .forma-container {
     background-color: rgba(226, 226, 226, 0.459);
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100%;
     display: flex;
     flex-direction: column;
     padding-top: 100px;
