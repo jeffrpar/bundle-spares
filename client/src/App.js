@@ -6,6 +6,7 @@ import Cart from './components/Main/Cart/Cart';
 import Register from './components/Main/Register/Register';
 import Login from './components/Main/Login/Login';
 import Wishlist from './components/Main/Wishlist/Wishlist';
+import Donate from './components/Main/Donate/Donate';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from 'apollo-link-context';
 import './App.css';
@@ -64,6 +65,7 @@ function App() {
         {activeSection === 'Wishlist' && <Wishlist />}
         {activeSection === 'Register' && <Register />}
         {activeSection === 'Login' && <Login />}
+        {activeSection === 'Donate' && <Donate />}
 
         {/* <Footer /> */}
 
