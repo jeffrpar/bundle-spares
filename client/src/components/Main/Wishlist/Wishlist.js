@@ -52,11 +52,6 @@ function Wishlist() {
                 variables: { id: itemId }
             });
 
-            // Filter out the item that was removed
-            const filteredData = savedData.savedItems.filter(item => item._id !== id);
-
-            // Set the user data to the filtered data 
-            setSavedData({ ...savedData, savedItems: filteredData });
 
         } catch (err) {
             console.error(err);
@@ -129,9 +124,9 @@ function Wishlist() {
     // After loading, return the saved items
     return (
         <>
-            
+
             <div className='saved'>
-            <h2>WishList</h2>
+                <h2>WishList</h2>
                 {
                     Auth.loggedIn() ?
                         (
@@ -140,38 +135,55 @@ function Wishlist() {
                                 <div className="cart-card">
                                     {savedData.savedItems?.map((item, index) => {
                                         return (
-                                            <div key={item._id} className="cart-item">
-                                                <div className="cart-item-image">
-                                                    <img src={item.img} alt={item.name} />
-                                                </div>
-                                                <div className="cart-item-name">
-                                                    <h3>{item.name}</h3>
-                                                </div>
-                                                <div className="cart-item-stock">
-                                                    <h3>{item.stock}</h3>
-                                                </div>
-                                                <div className="cart-item-category">
-                                                    <h3>{item.category.category}</h3>
-                                                </div>
-                                                <div className='buttons'>
-                                                    {myData.data.me.cart.find(cartItem => cartItem._id === item._id) ? (
-                                                        // If the item is in the cart, show the remove button
-                                                        <div className="cart-item-remove">
-                                                            <h3>In cart</h3>
-                                                        </div>
-                                                    ) : (
-                                                        <>
-                                                            <div className="cart-item-add">
-                                                                <button onClick={() => handleAddToCart(item._id)}>Add to Cart</button>
-                                                            </div>
-                                                        </>
-                                                    )}
-
-                                                    <div className="cart-item-remove">
-                                                        <button onClick={() => handleRemoveFromSaved(item._id, item._id)}>Remove</button>
+                                            <>
+                                                <div key={item._id} className="cart-item">
+                                                    <div className="cart-item-image">
+                                                        <img src={item.img} alt={item.name} />
                                                     </div>
+                                                    <div className="cart-item-name">
+                                                        <h3>{item.name}</h3>
+                                                    </div>
+                                                    <div className="cart-item-stock">
+                                                        <h3>{item.stock}</h3>
+                                                    </div>
+                                                    <div className="cart-item-category">
+                                                        <h3>{item.category.category}</h3>
+                                                    </div>
+                                                    <div className='buttons'>
+                                                        {myData.data.me.cart.find(cartItem => cartItem._id === item._id) ? (
+                                                            // If the item is in the cart, show the in cart info
+                                                            <div className="cart-item-remove">
+                                                                <h3>In cart</h3>
+                                                            </div>
+                                                        ) : (
+                                                            <>
+                                                                {/* {myData.data.me.ownedItems.find(owned => owned._id === item._id)?.(
+                                                                    handleRemoveFromSaved(item._id, item._id)
+                                                                )} */}
+                                                                {myData.data.me.ownedItems.find(cartItem => cartItem._id === item._id) ? (
+                                                                    <>
+                                                                        <div className="cart-item-remove own">
+                                                                            <h3>Owned</h3>
+                                                                        </div>
+                                                                    </>
+                                                                ) : (
+                                                                    <>
+                                                                        <div className="cart-item-add">
+                                                                            <button onClick={() => handleAddToCart(item._id)}>Add to Cart</button>
+                                                                        </div>
+                                                                    </>
+                                                                )}
+
+                                                            </>
+                                                        )}
+
+                                                        <div className="cart-item-remove">
+                                                            <button onClick={() => handleRemoveFromSaved(item._id, item._id)}>Remove</button>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
-                                            </div>
+                                            </>
                                         )
                                     })}
                                 </div>

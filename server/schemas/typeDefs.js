@@ -70,7 +70,9 @@ const typeDefs = gql`
             _id: ID!
         ): User
         # 
-        checkoutCart: User
+        checkoutCart(
+            _id: ID!
+        ): User
         # Takes the desired item to delete ID
         removeSavedItem(
             _id: ID!

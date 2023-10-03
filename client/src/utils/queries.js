@@ -35,6 +35,8 @@ export const QUERY_ME = gql`
         serialKey
         img
       }
+      savedCount
+      cartCount
     }
   }
 `;

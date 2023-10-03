@@ -95,8 +95,8 @@ export const REMOVE_SAVED_ITEM = gql`
 `;
 
 export const CHECKOUT_CART = gql`
-  mutation checkoutCart {
-    checkoutCart {
+  mutation checkoutCart($id: ID!) {
+    checkoutCart(_id: $id) {
       _id
       email
       username

@@ -12,9 +12,11 @@ const resolvers = {
         me: async (root, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id }).select('-__v -password'
-                ).populate('savedItems cart')
+                ).populate('savedItems cart ownedItems')
                     .populate({ path: 'cart', populate: { path: 'category' } })
-                    .populate({ path: 'savedItems', populate: { path: 'category' } });
+                    .populate({ path: 'savedItems', populate: { path: 'category' } })
+                    .populate({ path: 'ownedItems', populate: { path: 'category' } })
+                    .populate({ path: 'ownedItems', populate: { path: 'category' } });
                 // Returns the user information and takes the password out of the object.
                 return userData;
             };
@@ -23,8 +25,10 @@ const resolvers = {
         },
 
         // Searchs for all of the items available.
-        allItems: async (root, args) => { return await Items.find({}).populate('category')
-            .populate({ path: 'category', populate: { path: 'items' } })},
+        allItems: async (root, args) => {
+            return await Items.find({}).populate('category')
+                .populate({ path: 'category', populate: { path: 'items' } })
+        },
 
         // Searchs for a specifc item.
         findItem: async (root, args) => {
@@ -157,26 +161,23 @@ const resolvers = {
             throw new AuthenticationError("You need to be logged in");
         },
 
-        checkoutCart: async (root, args, context) => {
+        checkoutCart: async (root, { _id }, context) => {
             if (context.user) {
-              const cartItems = context.user.cart || []; // Ensure it's an array or use an empty array if it's null
-              
-              // Update the user's cart items to be owned items and clear the cart after checkout
-              const updatedUser = await User.findByIdAndUpdate(
-                context.user._id,
-                {
-                  $push: { ownedItems: { $each: cartItems } },
-                  $set: { cart: [] }, // Clear the cart after checkout
-                },
-                { new: true }
-              ).populate('ownedItems')
-              
-              return updatedUser;
+
+                // Update the user's cart items to be owned items and clear the cart after checkout
+                const updatedUser = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $addToSet: { ownedItems: _id } },
+                    { new: true, runValidators: true }
+                ).populate('ownedItems category')
+                
+
+                return updatedUser;
             }
-          
+
             // Throws an auth error if the user is not logged in.
             throw new AuthenticationError("You need to be logged in");
-        },          
+        },
     },
 }
 

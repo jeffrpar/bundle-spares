@@ -61,6 +61,21 @@
   .ham-pic {
     display: none;
   }
+
+  .cart-q {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 3px;
+  }
+
+  .cart-quantity {
+    color: #FFD700;
+    font-weight: bold;
+    font-size: 12px;
+  }
   
   @media screen and (max-width: 768px) {
     .nav-list {
@@ -90,7 +105,7 @@
     }
   
     .nav-list li {
-      border-bottom: 2px solid #FFD700;
+      border-radius: 20px;
       padding-bottom: 10px;
       padding-top: 10px;
     }
