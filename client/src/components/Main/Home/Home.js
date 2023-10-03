@@ -11,8 +11,7 @@ import Auth from "../../../utils/auth";
 
 function Home() {
 
-  // Query to get user data
-  const myData = useQuery(QUERY_ME);
+
   // UseState to store user data
   const [userData, setUserData] = useState({});
 
@@ -30,13 +29,6 @@ function Home() {
     }
   }
     , [data]);
-
-  useEffect(() => {
-    if (myData) {
-      setUserData(myData.me);
-    }
-  }
-    , [myData]);
 
 
   // Execute the GraphQL mutation to add an item to the cart
@@ -120,6 +112,15 @@ function Home() {
     }
   };
 
+  // Query to get user data
+  const myData = useQuery(QUERY_ME);
+
+
+  if (Auth.loggedIn()) {
+
+    return myData?.setUserData(myData.me);
+
+  }
 
 
 
