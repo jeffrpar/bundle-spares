@@ -127,6 +127,7 @@ h2 {
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
+    margin-bottom: 100px;
 }
 
 .checkout-button {

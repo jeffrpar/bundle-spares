@@ -144,7 +144,7 @@ function Wishlist() {
                                                         <h3>{item.name}</h3>
                                                     </div>
                                                     <div className="cart-item-stock">
-                                                        <h3>{item.stock}</h3>
+                                                        <h3><span>Stock:</span> {item.stock}</h3>
                                                     </div>
                                                     <div className="cart-item-category">
                                                         <h3>{item.category.category}</h3>
