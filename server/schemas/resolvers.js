@@ -23,7 +23,7 @@ const resolvers = {
         },
 
         // Searchs for all of the items available.
-        allItems: async () => { return await Items.find({}).populate('category')
+        allItems: async (root, args) => { return await Items.find({}).populate('category')
             .populate({ path: 'category', populate: { path: 'items' } })},
 
         // Searchs for a specifc item.
