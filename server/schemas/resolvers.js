@@ -59,8 +59,8 @@ const resolvers = {
                 ],
                 // Takes the success and cancel urls from the client.
                 mode: 'payment',
-                success_url: `http://localhost:3000/`,
-                cancel_url: `http://localhost:3000/`,
+                success_url: `http://bundlespares.com/`,
+                cancel_url: `http://bundlespares.com/`,
             })
 
             // Returns the session.
