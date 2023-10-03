@@ -8,11 +8,6 @@ function Nav(props) {
   const { activeSection, onSectionChange } = props;
 
 
-
-
-
-
-
   const [action, setAction] = useState(false);
 
   const handleClick = () => {
@@ -28,6 +23,9 @@ function Nav(props) {
 
 
   return (
+
+
+
     <nav className="nav">
       <div id='hamburger'>
         <i id='ham'

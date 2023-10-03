@@ -93,4 +93,12 @@ query findCategory($categoryName: String!){
         category
     }
 }
+`;
+
+export const QUERY_CHECKOUT = gql`
+
+query checkout{
+      createCheckoutSession
+    
+}
 `; 

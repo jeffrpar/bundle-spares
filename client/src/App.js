@@ -56,8 +56,10 @@ function App() {
   };
 
   return (
+
     <ApolloProvider client={client}>
       <div className="App">
+
         <Header activeSection={activeSection} onSectionChange={handleSectionChange} />
 
         {/* Conditionally render the selected Main component */}
@@ -71,8 +73,14 @@ function App() {
 
         {/* <Footer /> */}
 
+
+
       </div>
+
+
     </ ApolloProvider>
+
+
   );
 }
 
