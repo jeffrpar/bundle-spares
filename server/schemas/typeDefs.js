@@ -2,7 +2,7 @@
 // Dependencies
 
 const { gql } = require('apollo-server-express');
-
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const typeDefs = gql`
 
@@ -49,6 +49,7 @@ const typeDefs = gql`
         findItem(itemName: String!): Items
         allCategories: [Category]
         findCategory(categoryName: String!): [Category]
+        createCheckoutSession: String!
     }
 
     # ---------------------------------------------------------------------------------------------------------

@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './Donate.css'
-import { useQuery, useMutation } from '@apollo/client'
-import Auth from '../../../utils/auth'
-import { QUERY_ME } from '../../../utils/queries'
-import { REMOVE_SAVED_ITEM } from '../../../utils/mutations'
-import { ADD_TO_CART } from '../../../utils/mutations'
-import { REMOVE_FROM_CART } from '../../../utils/mutations'
-
-
+import { useQuery } from '@apollo/client'
+import CheckoutButton from './btn/CheckButton';
 
 // --------------------------------------------------------------------------------
 // Component
 function Donate() {
     return (
         <>
+
             <div className='donate'>
                 <h1>Donate</h1>
                 <h2>Donate to our cause! <i class="fa-solid fa-circle-dollar-to-slot"></i></h2>
@@ -46,14 +41,14 @@ function Donate() {
                                 <img src='https://www.svgrepo.com/show/303251/mysql-logo.svg' ></img>
                                 <img src='' ></img>
                             </div>
-                            
+
                         </p>
                     </article>
                 </div>
 
 
 
-                <button>Click Here To Donate!</button>
+                <CheckoutButton />
 
             </div>
 

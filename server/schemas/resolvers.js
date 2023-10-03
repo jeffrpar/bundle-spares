@@ -4,6 +4,8 @@
 const { User, Category, Items } = require("../models/index");
 const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
+const stripe = require('stripe')('sk_test_51NxF9XDzafWQXXJOneCDjxe3LbyTxVVzfQIPjSLCyoHd17wql7e6xamqIG7rFXs2v7SM5rg7rkdKF74dafzNx4Kx001Q4hAe4e');
+const PORT = process.env.PORT || 3001;
 
 // ----------------------------------------------------------------
 // Resolvers for the typeDefs.
@@ -44,6 +46,26 @@ const resolvers = {
             const { categoryName } = await args;
             return await Category.findOne({ category: categoryName })
         },
+
+        // Creates a checkout session.
+        createCheckoutSession: async () => {
+            const session = await stripe.checkout.sessions.create({
+                // Takes the price id from the stripe dashboard.
+                line_items: [
+                    {
+                        price: 'price_1NxFG7DzafWQXXJOdMAZNsAF',
+                        quantity: 1,
+                    }
+                ],
+                // Takes the success and cancel urls from the client.
+                mode: 'payment',
+                success_url: `http://localhost:3000/`,
+                cancel_url: `http://localhost:3000/`,
+            })
+
+            // Returns the session.
+            return JSON.stringify({ url: session.url });
+        }
 
     },
 
@@ -170,7 +192,7 @@ const resolvers = {
                     { $addToSet: { ownedItems: _id } },
                     { new: true, runValidators: true }
                 ).populate('ownedItems category')
-                
+
 
                 return updatedUser;
             }
