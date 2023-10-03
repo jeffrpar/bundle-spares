@@ -1,0 +1,184 @@
+.owned {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+    background-color: rgba(226, 226, 226, 0.459);
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(64, 9, 121, 1) 27%, rgba(0, 0, 0, 0.9122023809523809) 100%);
+    min-height: 100vh;
+    max-height: 100%;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 0;
+    text-align: center;
+    padding: 30px 0px 30px 0px;
+    width: 100%;
+    color: #FFD700;
+    background-color: rgba(240, 248, 255, 0.027);
+}
+
+
+.owned .buttons h3 {
+    color: #FFD700;
+    font-size: 20px;
+    background-color: rgb(32, 32, 32);
+    height: 30px;
+    width: 100px;
+    border-radius: 20px;
+}
+
+.owned .owned-item-name h3 {
+    color: #FFD700;
+    font-size: 20px;
+}
+
+.owned .owned-item img {
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    border: 2px solid #FFD700;
+    border-radius: 30px;
+}
+
+.owned .owned-item {
+    background: rgb(32, 32, 32);
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    width: 350px;
+    height: 200px;
+    padding: 50px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+
+.owned .owned-item:hover {
+    transform: scale(1.1);
+    border: 5px solid #FFD700;
+    transition: ease-in-out 300ms;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.owned .owned-item .owned-item-add {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.owned .owned-item .owned-item-add button {
+    background: none;
+    border: none;
+    color: rgb(32, 32, 32);
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: ease-in-out 300ms;
+    background-color: rgb(32, 32, 32);
+    color: #FFD700;
+    border-radius: 20px;
+    border: 2px solid #FFD700;
+}
+
+.owned .owned-item .owned-item-add button:hover {
+    background-color: #FFD700;
+    color: rgb(32, 32, 32);
+    transform: scale(1.1);
+    transition: ease-in-out 300ms;
+}
+
+.owned .owned-item .owned-item-remove {
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.owned .owned-item .owned-item-remove button {
+    background: none;
+    border: none;
+    color: rgb(32, 32, 32);
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: ease-in-out 300ms;
+    background-color: rgb(32, 32, 32);
+    color: #FFD700;
+    border-radius: 20px;
+    border: 2px solid #FFD700;
+}
+
+.owned .owned-item .owned-item-remove button:hover {
+    background-color: #FFD700;
+    color: rgb(32, 32, 32);
+    transform: scale(1.1);
+    transition: ease-in-out 300ms;
+}
+
+.owned .owned-item h3 {
+    margin: 5px 0;
+}
+
+.owned .owned-item-stock {
+    color: #FFD700;
+}
+
+.owned .owned-item-stock span {
+    color: aliceblue;
+}
+
+.owned .owned-item-category {
+    border-top: 2px solid aliceblue;
+    color: #FFD700;
+}
+
+.owned .o-items {
+    margin: 0 auto;
+    color: #FFD700;
+    font-size: 20px;
+    background-color: rgba(32, 32, 32, 0.219);
+    height: auto;
+    width: 250px;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.owned p {
+    color: aliceblue;
+}
+
+.owned p span {
+    color: #FFD700;
+}
+
+
+
+
+
+@media (max-width: 767px) {
+
+    .cart h2 {
+        width: 100%;
+        color: #FFD700;
+        background-color: rgba(240, 248, 255, 0.027);
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cart .cart-item {
+        width: 250px;
+        height: 150px;
+        padding: 30px;
+    }
+}

@@ -79,7 +79,7 @@ userSchema.virtual('savedCount').get(function () {
 
 // When we query a user, we'll also get another field called `userCart` with the number of items we have in the cart.
 userSchema.virtual('cartCount').get(function () {
-    return this.userCart.length;
+    return this.cart.length;
 });
 
 // When we query a user, we'll also get another field called `userOwned` with the number of items we have that belong to the user.

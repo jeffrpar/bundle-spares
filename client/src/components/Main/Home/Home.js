@@ -19,7 +19,6 @@ function Home() {
 
   // Execute the GraphQL query to fetch item data
   const { loading, data } = useQuery(QUERY_ALL_ITEMS);
-  // console.log(data);
 
   // UseState to store user data
   const [itemsData, setItemsData] = useState({});
@@ -49,7 +48,6 @@ function Home() {
       const { data } = await addToCart({
         variables: { id: itemId },
       });
-      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -117,7 +115,6 @@ function Home() {
       const { data } = await SaveItem({
         variables: { id: itemId },
       });
-      console.log(data);
     } catch (err) {
       console.error(err);
     }
@@ -166,9 +163,20 @@ function Home() {
                           </div>
                         ) : (
                           <>
-                            <div className="cart-item-add">
-                              <button onClick={() => handleAddToCart(item._id)}><i class="fa-solid fa-cart-shopping"></i></button>
-                            </div>
+                            {myData.data.me.ownedItems.find(owned => owned._id === item._id) ? (
+                              <>
+                                {/* // If the item is in the cart, show the in cart info */}
+                                <div className="cart-item-remove own">
+                                  <h3>Owned</h3>
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <div className="cart-item-add">
+                                  <button onClick={() => handleAddToCart(item._id)}><i class="fa-solid fa-cart-shopping"></i></button>
+                                </div>
+                              </>
+                            )}
                           </>
                         )}
 
@@ -181,9 +189,19 @@ function Home() {
                           </div>
                         ) : (
                           <>
-                            <div className="cart-item-add">
-                              <button onClick={() => handleAddToWishlist(item._id)}><i class="fa-regular fa-heart"></i></button>
-                            </div>
+
+                            {myData.data.me.ownedItems.find(cartItem => cartItem._id === item._id) ? (
+                              <>
+
+                              </>
+                            ) : (
+                              <>
+                                <div className="cart-item-add">
+                                  <button onClick={() => handleAddToWishlist(item._id)}><i class="fa-regular fa-heart"></i></button>
+                                </div>
+                              </>
+                            )}
+
                           </>
                         )}
 
@@ -202,7 +220,7 @@ function Home() {
           )
         })}
 
-      </div>
+      </div >
 
     </>
   );

@@ -148,6 +148,18 @@ h2 {
     color: #FFD700;
 }
 
+.own {
+    background: none;
+    border: none;
+    color: rgb(32, 32, 32);
+    cursor: pointer;
+    padding: 5px 20px;
+    border-radius: 30px;
+    transition: ease-in-out 300ms;
+    background-color: rgb(32, 32, 32);
+    color: #FFD700;
+    border-radius: 20px;
+}
 
 /* Media Queries */
 
