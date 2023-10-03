@@ -19,7 +19,7 @@ function Home() {
 
   // Execute the GraphQL query to fetch item data
   const { loading, data } = useQuery(QUERY_ALL_ITEMS);
-  console.log(data);
+  // console.log(data);
 
   // UseState to store user data
   const [itemsData, setItemsData] = useState({});
