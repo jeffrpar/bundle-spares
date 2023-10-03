@@ -70,7 +70,7 @@ function Home() {
   };
 
   // Execute the GraphQL mutation to add an item to the saved items
-  const [SaveItem] = useMutation(SAVE_ITEM, { refetchQueries: [QUERY_ALL_ITEMS, QUERY_ME] });
+  const [SaveItem] = useMutation(SAVE_ITEM, { refetchQueries: [QUERY_ALL_ITEMS] });
   // Mutation to remove item from saved items
   const [removeSavedItem] = useMutation(REMOVE_SAVED_ITEM, { refetchQueries: [QUERY_ME] });
 
@@ -112,17 +112,12 @@ function Home() {
     }
   };
 
+
   // Query to get user data
   const myData = useQuery(QUERY_ME);
 
 
-
-
-
-
   if (loading) return <p>Loading...</p>;
-
-
 
 
 
@@ -151,57 +146,57 @@ function Home() {
                 {Auth.loggedIn() ?
                   (
                     <>
-                      <>
-                        {myData.data.me.cart.find(cartItem => cartItem._id === item._id) ? (
-                          // If the item is in the cart, show the remove button
-                          <div className="cart-item-remove">
-                            <button onClick={() => handleRemoveFromCart(item._id, item._id)}><i class="fa-solid fa-ban"></i></button>
-                          </div>
-                        ) : (
-                          <>
-                            {myData.data.me.ownedItems.find(owned => owned._id === item._id) ? (
-                              <>
-                                {/* // If the item is in the cart, show the in cart info */}
-                                <div className="cart-item-remove own">
-                                  <h3>Owned</h3>
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                <div className="cart-item-add">
-                                  <button onClick={() => handleAddToCart(item._id)}><i class="fa-solid fa-cart-shopping"></i></button>
-                                </div>
-                              </>
-                            )}
-                          </>
-                        )}
 
-                      </>
-                      <>
-                        {myData.data.me.savedItems.find(cartItem => cartItem._id === item._id) ? (
-                          // If the item is in the SaveItem, show the remove button
-                          <div className="cart-item-remove">
-                            <button onClick={() => handleRemoveFromSaved(item._id, item._id)}><i class="fa-solid fa-heart"></i></button>
-                          </div>
-                        ) : (
-                          <>
+                      {myData.data.me.cart.find(cartItem => cartItem._id === item._id) ? (
+                        // If the item is in the cart, show the remove button
+                        <div className="cart-item-remove">
+                          <button onClick={() => handleRemoveFromCart(item._id, item._id)}><i class="fa-solid fa-ban"></i></button>
+                        </div>
+                      ) : (
+                        <>
+                          {myData.data.me.ownedItems.find(owned => owned._id === item._id) ? (
+                            <>
+                              {/* // If the item is in the cart, show the in cart info */}
+                              <div className="cart-item-remove own">
+                                <h3>Owned</h3>
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div className="cart-item-add">
+                                <button onClick={() => handleAddToCart(item._id)}><i class="fa-solid fa-cart-shopping"></i></button>
+                              </div>
+                            </>
+                          )}
+                        </>
+                      )}
 
-                            {myData.data.me.ownedItems.find(cartItem => cartItem._id === item._id) ? (
-                              <>
 
-                              </>
-                            ) : (
-                              <>
-                                <div className="cart-item-add">
-                                  <button onClick={() => handleAddToWishlist(item._id)}><i class="fa-regular fa-heart"></i></button>
-                                </div>
-                              </>
-                            )}
 
-                          </>
-                        )}
+                      {myData.data.me.savedItems.find(cartItem => cartItem._id === item._id) ? (
+                        // If the item is in the SaveItem, show the remove button
+                        <div className="cart-item-remove">
+                          <button onClick={() => handleRemoveFromSaved(item._id, item._id)}><i class="fa-solid fa-heart"></i></button>
+                        </div>
+                      ) : (
+                        <>
 
-                      </>
+                          {myData.data.me.ownedItems.find(cartItem => cartItem._id === item._id) ? (
+                            <>
+
+                            </>
+                          ) : (
+                            <>
+                              <div className="cart-item-add">
+                                <button onClick={() => handleAddToWishlist(item._id)}><i class="fa-regular fa-heart"></i></button>
+                              </div>
+                            </>
+                          )}
+
+                        </>
+                      )}
+
+
                     </>
                   )
                   :

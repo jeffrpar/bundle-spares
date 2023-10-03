@@ -46,9 +46,10 @@ function Donate() {
                     </article>
                 </div>
 
+                <div className='boton' >
+                    <CheckoutButton />
+                </div>
 
-
-                <CheckoutButton />
 
             </div>
 
