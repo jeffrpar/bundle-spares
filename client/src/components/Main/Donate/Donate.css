@@ -52,6 +52,11 @@
     margin-top: 30px;
 }
 
+.donate .boton {
+    display: flex;
+    justify-content: center;
+}
+
 .donate button {
     background: none;
     border: none;
@@ -64,10 +69,12 @@
     color: #FFD700;
     border-radius: 20px;
     border: 2px solid #FFD700;
+    width: 200px;
     margin: 0 auto;
     margin-top: -50px;
     margin-bottom: 50px;
-    width: 200px;
+    text-align: center;
+    align-items: center;
 }
 
 .donate button:hover {
