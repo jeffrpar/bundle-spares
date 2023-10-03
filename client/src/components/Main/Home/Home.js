@@ -116,11 +116,6 @@ function Home() {
   const myData = useQuery(QUERY_ME);
 
 
-  if (Auth.loggedIn()) {
-
-    return myData?.setUserData(myData.me);
-
-  }
 
 
 
