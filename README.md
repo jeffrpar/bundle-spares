@@ -1,10 +1,10 @@
 # Bundle-Spares
 
-![Screenshot]()
+![Screenshot](./assets/bundle-spares-screenshot.JPG)
 
 ## Description
 
-
+"Bundle Spares" is a specialized e-commerce platform designed for gamers and gaming enthusiasts. It provides a unique service by offering spare keys for video games that users can claim. Users can create accounts, explore a wide range of available game keys, add them to their carts, save games they're interested in for later, and view their claimed keys. The app features a robust authentication system to ensure user data security and privacy, offering gamers a convenient and secure way to access spare game keys for their favorite titles.
 
 ## Table of Contents
 
@@ -19,7 +19,7 @@
 
 ## Live-Deployment
 
-
+[bundlespares.com](bundlespares.com)
 
 ## Installation
 
@@ -29,11 +29,13 @@
 
 3. Use the VS Code terminal and type `npm i` to install the dependencies required by the application.
 
-4. You can then use the command `npm run develop` to run the application on a local server.
+4. Use the VS Code terminal and type `npm run build` to prepare the app to run.
+
+5. You can then use the command `npm run develop` to run the application on a local server.
 
 ## Usage
 
-
+Users can create accounts, add items to their shopping carts, save items for later, and view their order history.
 
 ## Contributing-Guidelines
 
@@ -74,7 +76,11 @@ Your pull request will be reviewed by the maintainers, who may provide feedback 
 
 ## Future-Development-Goals
 
+- Add a section where users can upload spare keys for games they want to share with the community
 
+- Advanced Search and Filters: Improve the search functionality with advanced filters like genre, release date, or platform, making it easier for users to find specific games.
+
+- Mobile App: Develop a mobile application for "Bundle Spares" to reach a broader audience and provide on-the-go access to game keys.
 
 ## Tests
 
@@ -88,6 +94,6 @@ Please refer to the GNU General Public License v3.0 information [here](https://w
 
 ## Questions
 
-Github profile: [https://github.com/jeffrpar](https://github.com/jeffrpar).
+Github profile: [https://github.com/jeffrpar](https://github.com/jeffrpar) & [https://github.com/OkamiXX](https://github.com/OkamiXX).
 
 If you have any additional questions about this application, please reach out to me via email at [jeffrpar@gmail.com](jeffrpar@gmail.com).
