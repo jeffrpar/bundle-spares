@@ -4,3 +4,8 @@
     box-sizing: border-box;
     font-family: 'Rubik', sans-serif;
 }
+
+::selection {
+    color: aliceblue;
+    background: rgb(32, 32, 32);
+}

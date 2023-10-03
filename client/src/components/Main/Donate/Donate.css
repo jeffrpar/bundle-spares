@@ -1,0 +1,90 @@
+.donate {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+    background-color: rgba(226, 226, 226, 0.459);
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(64,9,121,1) 27%, rgba(0,0,0,0.9122023809523809) 100%);
+    min-height: 100vh;
+    max-height: 100%;
+}
+
+.why {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.why h1 {
+    color: #FFD700;
+    margin-bottom: 15px;
+}
+
+.why p {
+    color: aliceblue;
+}
+
+.why h3 {
+    margin-top: 15px;
+    color: #FFD700;
+}
+
+
+.why article {
+    padding: 30px;
+    width: 40%;
+}
+
+.why img {
+    width: 100px;
+    height: auto;
+    border-radius: 30px;
+    
+}
+
+.why .imagenes {
+    background-color: rgb(32,32,32);
+    padding: 30px;
+    align-items: center;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.donate button {
+    background: none;
+    border: none;
+    color: rgb(32, 32, 32);
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transition: ease-in-out 300ms;
+    background-color: rgb(32, 32, 32);
+    color: #FFD700;
+    border-radius: 20px;
+    border: 2px solid #FFD700;
+    margin: 0 auto;
+    margin-top: -50px;
+    margin-bottom: 50px;
+    width: 200px;
+}
+
+.donate button:hover {
+    background-color: #FFD700;
+    color: rgb(32, 32, 32);
+    transform: scale(1.1);
+    transition: ease-in-out 300ms;
+}
+
+
+@media screen and (max-width: 768px) {
+    .why {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .why article {
+        width: 100%;
+    }
+}

@@ -38,4 +38,81 @@
     transform: scale(1.1);
     transition: ease-in-out 300ms;  /* Add a transition effect */
   }
+
+  #hamburger i {
+    color: #FFD700;
+  }
   
+  #hamburger {
+    display: none;
+  }
+  
+  .nav-list a:hover,
+  .nav-list a.active {
+    color: #FFD700;
+    transition: ease-in-out 300ms;
+  }
+  
+  .nav-list a.active {
+    color: #FFD700;
+    transition: ease-in-out 300ms;
+  }
+
+  .ham-pic {
+    display: none;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-list {
+      flex-direction: column; /* Stack items vertically on small screens */
+      gap: 20px; /* Add spacing between items */
+      height: 100vh;
+    }
+  
+    .nav-item {
+      margin: 0; /* Remove spacing between items */
+    }
+
+    .nav-list {
+      display: none;
+    }
+  
+    .nav-list.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 85vh;
+      margin-top: 20px;
+      padding: 0px 5rem;
+      background-color: transparent;
+      font-size: 1.6rem;
+    }
+  
+    .nav-list li {
+      border-bottom: 2px solid #FFD700;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+
+    #hamburger {
+      display: block;
+      cursor: pointer;
+    }
+  
+    #hamburger i {
+      font-size: 2rem;
+      margin-top: 10px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .ham-pic {
+      width: 200px;
+      height: auto;
+      margin: 0 auto;
+      margin-top: 70px;
+      display: flex;
+    }
+
+  }
