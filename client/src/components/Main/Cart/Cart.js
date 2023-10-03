@@ -6,7 +6,7 @@ import './Cart.css'
 import { useQuery, useMutation } from '@apollo/client'
 import Auth from '../../../utils/auth'
 import { QUERY_ME } from '../../../utils/queries'
-import { REMOVE_FROM_CART } from '../../../utils/mutations'
+import { REMOVE_FROM_CART, CHECKOUT_CART } from '../../../utils/mutations'
 
 
 // --------------------------------------------------------------------------------
@@ -61,6 +61,30 @@ function Cart() {
         }
     };
 
+    const [checkoutCart] = useMutation(CHECKOUT_CART, { refetchQueries: [QUERY_ME] });
+      
+    const handleCheckout = async () => {
+      // Get token
+      const token = Auth.loggedIn() ? Auth.getToken() : null;
+  
+      // If token is null, return false
+      if (!token) {
+        return false;
+      }
+  
+      // Try to checkout the cart
+      try {
+        // Checkout cart
+        await checkoutCart();
+  
+        // Clear the cart after successful checkout
+        setUserData({ ...userData, cart: [] });
+      } catch (err) {
+        console.error("Checkout Error:", err);
+      }
+  };
+       
+
     // --------------------------------------------------------------------------------
     // Rendering
 
@@ -73,49 +97,46 @@ function Cart() {
     // After loading, return the cart
     return (
         <>
-            
-            <div className='cart'>
+          <div className="cart">
             <h2>Cart</h2>
-                {
-                    Auth.loggedIn() ?
-                        (
-                            <>
-
-                                <div className="cart-card">
-                                    {userData.cart?.map((item, index) => {
-                                        return (
-                                            <div key={item._id} className="cart-item">
-                                                <div className="cart-item-image">
-                                                    <img src={item.img} alt={item.name} />
-                                                </div>
-                                                <div className="cart-item-name">
-                                                    <h3>{item.name}</h3>
-                                                </div>
-                                                <div className="cart-item-stock">
-                                                    <h3>{item.stock}</h3>
-                                                </div>
-                                                <div className="cart-item-category">
-                                                    <h3>{item.category.category}</h3>
-                                                </div>
-                                                <div className="cart-item-remove">
-                                                    <button onClick={() => handleRemoveFromCart(item._id, item._id)}>Remove</button>
-                                                </div>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            </>
-                        )
-                        :
-                        (
-                            <>
-                                <div style={{color: "aliceblue"}}>Not Logged In, Log in in order to see your cart</div>
-                            </>
-                        )
-                }
-            </div>
+            {Auth.loggedIn() ? (
+              <>
+                <div className="cart-card">
+                  {userData.cart?.map((item, index) => {
+                    return (
+                      <div key={item._id} className="cart-item">
+                        <div className="cart-item-image">
+                          <img src={item.img} alt={item.name} />
+                        </div>
+                        <div className="cart-item-name">
+                          <h3>{item.name}</h3>
+                        </div>
+                        <div className="cart-item-stock">
+                          <h3>{item.stock}</h3>
+                        </div>
+                        <div className="cart-item-category">
+                          <h3>{item.category.category}</h3>
+                        </div>
+                        <div className="cart-item-remove">
+                          <button onClick={() => handleRemoveFromCart(item._id, item._id)}>Remove</button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className='checkout-button-container'>
+                    <button className="checkout-button" onClick={handleCheckout}>Checkout</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div style={{ color: 'aliceblue' }}>Not Logged In, Log in to see your cart</div>
+              </>
+            )}
+          </div>
         </>
-    )
+      );
+      
 }
 
 export default Cart;

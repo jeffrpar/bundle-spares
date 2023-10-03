@@ -156,6 +156,26 @@ const resolvers = {
             // Throws an auth error if the user is not logged in.
             throw new AuthenticationError("You need to be logged in");
         },
+
+        checkoutCart: async (root, args, context) => {
+            if (context.user) {
+        
+              // Update the user's cart items to be owned items
+              const updatedUser = await User.findByIdAndUpdate(
+                context.user._id,
+                {
+                  $push: { ownedItems: { $each: context.user.cart } },
+                  $set: { cart: [] }, // Clear the cart after checkout
+                },
+                { new: true }
+              );
+        
+              return updatedUser;
+            }
+        
+            // Throws an auth error if the user is not logged in.
+            throw new AuthenticationError("You need to be logged in");
+          },
     },
 }
 

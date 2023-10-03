@@ -94,3 +94,16 @@ export const REMOVE_SAVED_ITEM = gql`
     }
 `;
 
+export const CHECKOUT_CART = gql`
+  mutation checkoutCart {
+    checkoutCart {
+      _id
+      email
+      username
+      ownedItems {
+        _id
+        name
+      }
+    }
+  }
+`;
