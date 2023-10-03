@@ -33,6 +33,9 @@ function Nav(props) {
               <li className={`nav-item ${activeSection === 'Wishlist' ? 'active' : ''}`}>
                 <button onClick={() => onSectionChange('Wishlist')}><i class="fa-solid fa-heart"></i></button>
               </li>
+              <li className={`nav-item ${activeSection === 'User' ? 'active' : ''}`}>
+                <button onClick={() => onSectionChange('User')}>User</button>
+              </li>
             </>)
           :
 

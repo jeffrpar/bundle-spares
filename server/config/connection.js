@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/e_commerce_db')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1/e_commerce_db')
 console.log('\nConnection to DB !==Successful==!')
 
 

@@ -15,6 +15,7 @@ const typeDefs = gql`
         savedCount: Int!
         cart: [Items]
         cartCount: Int!
+        ownedItems: [Items]
     }
 
 
@@ -68,6 +69,8 @@ const typeDefs = gql`
         removeCartItem(
             _id: ID!
         ): User
+        # 
+        checkoutCart: User
         # Takes the desired item to delete ID
         removeSavedItem(
             _id: ID!
