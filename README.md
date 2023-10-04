@@ -35,7 +35,7 @@
 
 ## Usage
 
-Users can create accounts, add items to their shopping carts, save items for later, and view their order history.
+Users can create accounts, explore a wide range of available game keys, add them to their carts, save games they're interested in for later, and view their claimed keys.
 
 ## Contributing-Guidelines
 
